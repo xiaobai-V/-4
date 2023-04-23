@@ -30,6 +30,14 @@ class Hammer():
         # 树莓派上改用adc读取
         self.VRX = ADC.read(0)
         self.VRY = ADC.read(1)
-        self.x = int(self.screen_rect.width * self.VRX / 255)
-        self.y = int(self.screen_rect.height * self.VRY / 255)
+        self.x = int(self.screen_rect.width * self.VRX / 255)-25
+        self.y = int(self.screen_rect.height * self.VRY / 255)-25
+        if (self.x < 0):
+            self.x = 0
+        if (self.y < 0):
+            self.y = 0
+        if (self.x > self.screen_rect.width-50):
+            self.x = self.screen_rect.width-50
+        if (self.y > self.screen_rect.height-50):
+            self.y = self.screen_rect.height-50
         self.position = (self.x, self.y)
